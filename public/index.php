@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
     <title>Lunar Archive</title>
 
     <!-- CDNs -->
@@ -25,6 +26,7 @@
         <div class="welcome p-4">
             <h3>Chào mừng đến với Lunar Archive</h3>
             <p>Đây là một dự án lưu trữ dữ liệu cá nhân của bạn.</p>
+            <a href="" class="btn btn-primary">Tham gia với chúng tôi</a>
         </div>
 
         <div class="about p-4">
