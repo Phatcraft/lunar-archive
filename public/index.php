@@ -18,7 +18,7 @@
 
         <div class="nav nav-underline">
             <a href="/" class="nav-link text-white active">Trang chủ</a>
-            <a href="" class="nav-link text-white">Tài khoản</a>
+            <a href="/account" class="nav-link text-white">Tài khoản</a>
         </div>
     </nav>
 
@@ -37,7 +37,7 @@
                     <img src="./images/data.png" width="300px" class="card-img-top border-bottom">
                     <div class="card-body">
                         <h5 class="card-title">Lưu trữ dữ liệu</h5>
-                        <p class="card-text">Lưu trữ dữ liệu tối ưu & an toàn</p>
+                        <p class="card-text">Lưu trữ dữ liệu an toàn và hiệu quả</p>
                     </div>
                 </div>
 
