@@ -1,0 +1,5 @@
+# This is Lunar Archive .gitignore file
+# This file will denied file uploaded to Github
+
+# .env file
+.env
