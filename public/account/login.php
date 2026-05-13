@@ -29,21 +29,21 @@
         <h5 class="m-1">Lunar Archive</h5>
 
         <div class="nav nav-underline">
-            <a href="/" class="nav-link text-white active">Trang chủ</a>
-            <a href="" class="nav-link text-white">Tài khoản</a>
+            <a href="/" class="nav-link text-white">Trang chủ</a>
+            <a href="" class="nav-link text-white active">Tài khoản</a>
         </div>
     </nav>
 
     <main class="d-flex justify-content-center">
-        <form method="post" class="bg-dark p-4 m-4 mx-2 text-white rounded" style="width: 330px;">
+        <form method="post" class="bg-dark p-4 py-5 m-4 mx-2 text-white rounded" style="width: 330px;">
             <h3 class="mb-3">Đăng nhập</h3>
 
-            <div class="input-group my-3">
+            <div class="input-group my-3 mt-4">
                 <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
                 <input type="text" name="username" class="form-control" placeholder="Tên tài khoản">
             </div>
 
-            <div class="input-group my-3 mb-1">
+            <div class="input-group my-3mb-1">
                 <div class="input-group-text"><i class="bi bi-key"></i></div>
                 <input type="password" name="password" class="form-control password" placeholder="Mật khẩu">
             </div>
