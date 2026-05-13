@@ -26,7 +26,7 @@
         <div class="welcome p-4">
             <h3>Chào mừng đến với Lunar Archive</h3>
             <p>Đây là một dự án lưu trữ dữ liệu cá nhân của bạn.</p>
-            <a href="" class="btn btn-primary">Tham gia với chúng tôi</a>
+            <a href="/account/signup.php" class="btn btn-primary">Tham gia với chúng tôi</a>
         </div>
 
         <div class="about p-4">

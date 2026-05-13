@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require("../../config/database.php");
 
     // Check user session exists
     if(isset($_SESSION["user"])){
@@ -34,9 +35,12 @@
         </div>
     </nav>
 
+    <!-- Message -->
+    <div id="message"></div>
+
     <main class="d-flex justify-content-center">
         <form method="post" class="bg-dark p-4 py-5 m-4 mx-2 text-white rounded" style="width: 330px;">
-            <h3 class="mb-3">Đăng nhập</h3>
+            <h3 class="mb-3">Đăng ký</h3>
 
             <div class="input-group my-3 mt-4">
                 <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
@@ -44,8 +48,18 @@
             </div>
 
             <div class="input-group my-3 mb-1">
+                <div class="input-group-text">@</div>
+                <input type="email" name="email" class="form-control password" placeholder="Email">
+            </div>
+
+            <div class="input-group my-3 mb-1">
                 <div class="input-group-text"><i class="bi bi-key"></i></div>
                 <input type="password" name="password" class="form-control password" placeholder="Mật khẩu">
+            </div>
+
+            <div class="input-group my-3 mb-1">
+                <div class="input-group-text"><i class="bi bi-key"></i></div>
+                <input type="password" name="confirm-password" class="form-control password" placeholder="Xác nhận mật khẩu">
             </div>
 
             <div class="form-check">
@@ -54,11 +68,37 @@
             </div>
             <script src="../scripts/show-password.js"></script>
 
-            <button type="submit" class="btn btn-danger my-3 w-100">Đăng nhập</button>
-            <p class="text-center">Chưa có tài khoản? <a href="/account/signup.php" class="link-light">Đăng ký ngay</a></p>
+            <button type="submit" class="btn btn-danger my-3 w-100">Đăng ký</button>
+            <p class="text-center">Đã có tài khoản? <a href="/account/login.php" class="link-light">Đăng nhập ngay</a></p>
 
         </form>
     </main>
+    <?php
+    
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $username = htmlspecialchars($_POST["username"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $password = htmlspecialchars($_POST["password"]);
+            $confirm = htmlspecialchars($_POST["confirm-password"]);
+
+            if($password != $confirm){
+                ?>
+                    <script type="module">
+                        import {failed_message} from "../scripts/messages.js"
+                        failed_message("Mật khẩu và xác nhận mật khẩu không khớp.")
+                    </script>
+                <?php
+            }else{
+                ?>
+                    <script type="module">
+                        import {success_message} from "../scripts/messages.js"
+                        success_message("Đăng nhập thành công")
+                    </script>
+                <?php
+            }
+        }
+
+    ?>
 
 </body>
 </html>
