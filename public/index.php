@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,42 +23,48 @@
         </div>
     </nav>
 
-    <main class="m-3">
-        <div class="welcome p-4">
-            <h3>Chào mừng đến với Lunar Archive</h3>
-            <p>Đây là một dự án lưu trữ dữ liệu cá nhân của bạn.</p>
-            <a href="/account/signup.php" class="btn btn-primary">Tham gia với chúng tôi</a>
-        </div>
+    <?php if(!isset($_SESSION["user"])):?>
+        <main class="m-3">
+            <div class="welcome p-4">
+                <h3>Chào mừng đến với Lunar Archive</h3>
+                <p>Đây là một dự án lưu trữ dữ liệu cá nhân của bạn.</p>
+                <a href="/account/signup.php" class="btn btn-primary">Tham gia với chúng tôi</a>
+            </div>
 
-        <div class="about p-4">
-            <h4>Tại Lunar Archive, bạn có thể</h4><br>
-            <div class="d-flex flex-wrap justify-content-center">
+            <div class="about p-4">
+                <h4>Tại Lunar Archive, bạn có thể</h4><br>
+                <div class="d-flex flex-wrap justify-content-center">
 
-                <div class="card m-2" style="width: 300px">
-                    <img src="./images/data.png" width="300px" class="card-img-top border-bottom">
-                    <div class="card-body">
-                        <h5 class="card-title">Lưu trữ dữ liệu</h5>
-                        <p class="card-text">Lưu trữ dữ liệu an toàn và hiệu quả</p>
+                    <div class="card m-2" style="width: 300px">
+                        <img src="./images/data.png" width="300px" class="card-img-top border-bottom">
+                        <div class="card-body">
+                            <h5 class="card-title">Lưu trữ dữ liệu</h5>
+                            <p class="card-text">Lưu trữ dữ liệu an toàn và hiệu quả</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card m-2" style="width: 300px">
-                    <img src="./images/manage.png" width="300px" class="card-img-top border-bottom">
-                    <div class="card-body">
-                        <h5 class="card-title">Quản lý dữ liệu</h5>
-                        <p class="card-text">Quản lý dữ liệu của bạn ngay tại trang web</p>
+                    <div class="card m-2" style="width: 300px">
+                        <img src="./images/manage.png" width="300px" class="card-img-top border-bottom">
+                        <div class="card-body">
+                            <h5 class="card-title">Quản lý dữ liệu</h5>
+                            <p class="card-text">Quản lý dữ liệu của bạn ngay tại trang web</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card m-2" style="width: 300px">
-                    <img src="./images/sharing.png" width="300px" class="card-img-top bỏder-bottom">
-                    <div class="card-body">
-                        <h5 class="card-title">Chia sẻ dữ liệu</h5>
-                        <p class="card-text">Chia sẻ dữ liệu của bạn với mọi người</p>
+                    <div class="card m-2" style="width: 300px">
+                        <img src="./images/sharing.png" width="300px" class="card-img-top bỏder-bottom">
+                        <div class="card-body">
+                            <h5 class="card-title">Chia sẻ dữ liệu</h5>
+                            <p class="card-text">Chia sẻ dữ liệu của bạn với mọi người</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    <?php else:?>
+        <main class="m-5">
+            <h3>Chào mừng, <?php echo $_SESSION["user"]["name"]?></h3>
+        </main>
+    <?php endif;?>
 </body>
 </html>

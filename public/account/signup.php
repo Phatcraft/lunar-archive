@@ -68,7 +68,7 @@
             </div>
             <script src="../scripts/show-password.js"></script>
 
-            <button type="submit" class="btn btn-danger my-3 w-100">Đăng ký</button>
+            <button type="submit" id="submit" class="btn btn-danger my-3 w-100">Đăng ký</button>
             <p class="text-center">Đã có tài khoản? <a href="/account/login.php" class="link-light">Đăng nhập ngay</a></p>
 
         </form>
@@ -89,12 +89,38 @@
                     </script>
                 <?php
             }else{
-                ?>
-                    <script type="module">
-                        import {success_message} from "../scripts/messages.js"
-                        success_message("Đăng nhập thành công")
-                    </script>
-                <?php
+
+                // Try to create user in database
+                $sql = $mysql->prepare("INSERT INTO users(userID, username, email, password) VALUES (?,?,?,?)");
+                $hash = password_hash($password, PASSWORD_BCRYPT);
+                $userID = bin2hex(random_bytes(16));
+
+                $sql->bind_param("ssss", $userID, $username, $email, $hash);
+
+                try{
+                    $sql->execute();
+                    // Create session
+                    $_SESSION["user"] = [
+                        "id" => $userID,
+                        "name" => $username
+                    ]
+
+                    ?>
+                        <script type="module">
+                            import {success_message} from "../scripts/messages.js"
+                            success_message("Đăng ký thành công")
+                        </script>
+                    <?php
+                }catch(mysqli_sql_exception){
+                    ?>
+                        <script type="module">
+                            import {failed_message} from "../scripts/messages.js"
+                            failed_message("Tên tài khoản hoặc email đã tồn tại.")
+                        </script>
+                    <?php
+                }
+
+                
             }
         }
 

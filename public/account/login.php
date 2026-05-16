@@ -34,6 +34,8 @@
         </div>
     </nav>
 
+    <div id="message"></div>
+
     <main class="d-flex justify-content-center">
         <form method="post" class="bg-dark p-4 py-5 m-4 mx-2 text-white rounded" style="width: 330px;">
             <h3 class="mb-3">Đăng nhập</h3>
@@ -54,11 +56,56 @@
             </div>
             <script src="../scripts/show-password.js"></script>
 
-            <button type="submit" class="btn btn-danger my-3 w-100">Đăng nhập</button>
+            <button type="submit" id="submit" class="btn btn-danger my-3 w-100">Đăng nhập</button>
             <p class="text-center">Chưa có tài khoản? <a href="/account/signup.php" class="link-light">Đăng ký ngay</a></p>
 
         </form>
     </main>
+
+    <?php
+        require("../../config/database.php");
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $username = htmlspecialchars($_POST["username"]);
+            $password = htmlspecialchars($_POST["password"]);
+
+            // Find a user in database
+            $user_sql = $mysql->prepare("SELECT userID, password FROM users WHERE username=?");
+            $user_sql->bind_param("s", $username);
+            $user_sql->execute();
+            
+            $userData = $user_sql->get_result();
+            if($userData->num_rows <= 0){
+                ?>
+                    <script type="module">
+                        import {failed_message} from "../scripts/messages.js"
+                        failed_message("Người dùng hoặc mật khẩu không đúng")
+                    </script>
+                <?php
+            }else{
+                $user = $userData->fetch_assoc();
+                if(password_verify($password, $user["password"])){
+                    $_SESSION["user"] = [
+                        "id" => $user["userID"],
+                        "name" => $username
+                    ];
+                    
+                    ?>
+                        <script type="module">
+                            import {success_message} from "../scripts/messages.js"
+                            success_message("Đăng nhập thành công")
+                        </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="module">
+                        import {failed_message} from "../scripts/messages.js"
+                        failed_message("Người dùng hoặc mật khẩu không đúng")
+                    </script>
+                <?php
+                }
+            }
+        }
+    ?>
 
 </body>
 </html>
