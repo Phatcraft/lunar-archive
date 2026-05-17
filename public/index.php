@@ -10,6 +10,7 @@
     <!-- CDNs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 </head>
 <body>
@@ -62,8 +63,56 @@
             </div>
         </main>
     <?php else:?>
-        <main class="m-5">
-            <h3>Chào mừng, <?php echo $_SESSION["user"]["name"]?></h3>
+        <main class="m-3">
+            <h4>Chào mừng, <?php echo $_SESSION["user"]["name"]?></h4>
+            <br>
+            <h5>File của bạn</h5>
+
+            <div class="files d-flex flex-wrap justify-content-center">
+
+                <div class="card p-2 m-1" style="width: 200px;">
+                    <div class="d-flex justify-content-center">
+                        <i class="bi bi-file-earmark-x" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center mx-2">Không có file</h5>
+                    </div>
+                </div>
+
+                
+
+                <!-- <div class="card p-2 m-1" style="width: 200px;">
+                    <div class="d-flex justify-content-center">
+                        <i class="bi bi-file-earmark-text" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center mx-2">test.txt</h5>
+                        <div class="actions d-flex p-2 justify-content-center">
+                            <a href="" class="btn btn-danger me-1 w-50">
+                                <i class="bi bi-search"></i>
+                            </a>
+                            <a href="" class="btn btn-success ms-1 w-50">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="card p-2 m-1" style="width: 200px;">
+                    <div class="d-flex justify-content-center">
+                        <i class="bi bi-file-earmark-plus" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center mx-2">Thêm file</h5>
+                        <div class="actions d-flex p-2 justify-content-center">
+                            <a href="" class="btn btn-danger me-1 w-100">
+                                <i class="bi bi-plus-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </main>
     <?php endif;?>
 </body>

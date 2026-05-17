@@ -58,7 +58,7 @@
                                 <span><?php echo $user["role_name"]?></span>
                             </p>
                             <p class="d-flex">
-                                <strong style="width: 150px;">Tổng dung lượng:</strong>
+                                <strong style="width: 150px;">Dung lượng:</strong>
                                 <span><?php echo $user["maximum_capacity"]?>GB</span>
                             </p>
                             <a href="/account/logout.php" class="btn btn-danger">Đăng xuất tài khoản</a>
